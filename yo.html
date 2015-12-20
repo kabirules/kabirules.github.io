@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+<body ng-app="myApp" ng-controller="formCtrl">
+<style>
+    body {
+        font-family: 'Montserrat', sans-serif; 
+        font-weight:bold;
+        background-color:#9B59B6;
+        color:#FFFFFF;
+        text-align:center;
+        margin:0px;
+        padding:0px;
+        font-size:24px;
+        vertical-align: center;
+    }
+    div {
+        height:89px;
+        vertical-align: center;
+    }
+    span {
+        color:#FFFFFF;
+        font-weight:bold;
+        width:100%;
+        text-align: center;
+        font-size:24px;
+        line-height:3.5em;
+    }
+    button {
+        background: transparent;
+        border: none;
+        color:#FFFFFF;
+        font-weight:bold;
+        width:100%;
+        text-align: center;
+        vertical-align: center;
+        height:89px;
+        font-size:24px;
+    }    
+    .turquoise {
+        background-color:#1ABC9C;
+    }
+    .emerald {
+        background-color:#2ECC71;
+    }
+    .peter {
+        background-color:#3498DB;
+    }    
+    .asphalt {
+        background-color:#34495E;
+    }
+    .green {
+        background-color:#16A085;
+    }
+    .sunflower {
+        background-color:#F1C40F;
+    }
+    .belize {
+        background-color:#2980B9;
+    }    
+    .wisteria {
+        background-color:#8E44AD;
+    }  
+    .alizarin {
+        background-color:#e74c3c;
+    }    
+    .amethyst {
+        background-color:#9B59B6;
+    }
+</style>
+<div ng-app="myApp" ng-controller="formCtrl">
+    <div class="emerald">
+        <span id="sender"></span>
+    </div>
+    <div class="peter">
+        <span id="message"></span>
+    </div>
+    <div class="asphalt">
+        <button class="asphalt" ng-click="openLink()">GET THE APP - INYoGNITO</button>        
+    </div>
+</div>
+    <script>
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        };
+        var value = getUrlParameter('param');
+        var arr = value.split('|');
+        document.getElementById('message').innerHTML = arr[0];    
+        if (arr.length>1) {
+            document.getElementById('sender').innerHTML = "MESSAGE FROM " +  arr[1].toUpperCase();    
+        } else {
+            document.getElementById('sender').innerHTML = "MESSAGE";    
+        }
+    </script>
+    <script>
+    var app = angular.module('myApp', []);
+    app.controller('formCtrl', function($scope, $http) {
+        $scope.openLink = function() {
+            window.open("https://play.google.com/store/apps/details?id=com.mimostudios.inyognito");
+        };
+    });
+    </script>    
+</body>
+</html>
